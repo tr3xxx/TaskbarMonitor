@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/tr3xtemp.iml" filepath="$PROJECT_DIR$/tr3xtemp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/TaskbarMonitor.iml" filepath="$PROJECT_DIR$/TaskbarMonitor.iml" />
     </modules>
   </component>
 </project>
