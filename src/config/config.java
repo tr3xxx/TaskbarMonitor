@@ -11,13 +11,37 @@ import java.awt.*;
 import java.util.prefs.BackingStoreException;
 import java.util.prefs.Preferences;
 
+/**
+ * @class Config.
+ * @description
+ * This class is used to load and update registry values.
+ * These values are used to determine which tray icons are displayed and which are not.
+ *
+ * @author Leon Burghardt
+ * @version 1.0
+ * @since   2022-12-22
+ */
+
 public class config {
     private static final Preferences prefs = Preferences.userNodeForPackage(config.class);
+
+    /**
+     * @method updateConfig
+     * @description
+     * This method is used to load the config from the registry.
+     * It will check if the config is already set and if not it will set the default values.
+     * After that it will check which tray icons are enabled and start them.
+     *
+     */
+
 
     public static void loadConfig() {
         int enabled_trays = 0;
         try {
             prefs.sync();
+
+            default_tray.enable();
+
             // Load cpu preferences
             if (prefs.getBoolean("show_cpu_usage_tray", false)) {
                 cpu_usage_tray.enable();
@@ -58,31 +82,39 @@ public class config {
                 mem_usage_tray.disable();
             }
 
-
             // prepend the program from closing if there are no enabled trays
-            if(enabled_trays == 0){
-                default_tray.enable();
-                System.out.println("No enabled trays, default tray enabled");
-            }
-            else{
-                System.out.println("Enabled trays: " + enabled_trays);
+            if(enabled_trays != 0){
                 default_tray.disable();
             }
-
-
-
 
         } catch(AWTException | BackingStoreException err){
             err.printStackTrace();
         }
     }
 
+    /**
+     * @method updateConfig
+     * @description
+     * This method is used to update the config in the registry.
+     *
+     * @param key   the key of the config value
+     * @param value the value the key should be set to
+     */
     public static void updateConfig(String key, boolean value) {
         prefs.putBoolean(key, value);
         System.out.println("Updated config: "+key+" = "+value);
         loadConfig();
     }
 
+    /**
+     * @method isEnable
+     * @description
+     * This method is used to check if a tray icon is enabled.
+     * Necessary to check when the program is started to determine which tray icons should be started.
+     *
+     * @param key the key of the config value to check for
+     * @return the boolean value of the config key, if the key is not set it will return false
+     */
     public static boolean isEnabled(String key) {
         return (prefs.getBoolean(key, false));
     }

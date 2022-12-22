@@ -7,13 +7,36 @@ import java.net.URISyntaxException;
 
 import config.config;
 
+/**
+ * @class popup_menu
+ * @description
+ * This class is used to create a popup menu.
+ * - It creates a popup menu.
+ * - It adds menu items to the popup menu.
+ * - It adds a listener to the menu items.
+ *
+ * @author Leon Burghardt
+ * @version 1.0
+ * @since 2022-12-22
+ */
 public class popup_menu {
+
+    /**
+     * @method getPopup
+     * @description
+     * This method is used to create a popup menu.
+     * - It creates a popup menu.
+     * - It adds menu items to the popup menu.
+     * - It adds a listener to the menu items.
+     *
+     * @return the popup menu as a PopupMenu object
+     */
     public static PopupMenu getPopup() {
 
         // Inner class to handle the connection between the popup item and the data
         class MenuItemData {
-            MenuItem menuItem;
-            String data;
+            final MenuItem menuItem;
+            final String data;
 
             public MenuItemData(MenuItem menuItem, String data) {
                 this.menuItem = menuItem;
@@ -88,7 +111,7 @@ public class popup_menu {
         exitItem.addActionListener(e -> System.exit(0));
         aboutItem.addActionListener(e -> {
             // Create a URI object for the URL
-            URI uri = null;
+            URI uri;
             try {
                 uri = new URI("https://github.com/tr3xxx/TaskbarMonitor");
             } catch (URISyntaxException ex) {

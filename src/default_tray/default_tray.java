@@ -9,9 +9,17 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.Objects;
 
+/**
+ * The type Default tray.
+ */
 public class default_tray {
     private static TrayIcon trayIcon;
 
+    /**
+     * Enable.
+     *
+     * @throws AWTException the awt exception
+     */
     public static void enable() throws AWTException {
         trayIcon = new TrayIcon(Objects.requireNonNull(fetchDefault()));
         trayIcon.setImageAutoSize(true);
@@ -33,6 +41,9 @@ public class default_tray {
         }
     }
 
+    /**
+     * Disable.
+     */
     public static void disable() {
         SystemTray.getSystemTray().remove(trayIcon);
     }

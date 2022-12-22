@@ -3,7 +3,16 @@ package utils;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
+/**
+ * The type Generate image.
+ */
 public class generate_image {
+    /**
+     * Create usage image with text buffered image.
+     *
+     * @param usage the usage
+     * @return the buffered image
+     */
     public static BufferedImage createUsageImageWithText(double usage) {
         // Set the font and font size
         Font font = new Font("Arial", Font.BOLD, 32);
@@ -21,6 +30,13 @@ public class generate_image {
 
         return generateImage(round(usage), font, textColor,fontSize);
     }
+
+    /**
+     * Create temp image with text buffered image.
+     *
+     * @param temp the temp
+     * @return the buffered image
+     */
     public static BufferedImage createTempImageWithText(double temp) {
         // Set the font and font size
         Font font = new Font("Arial", Font.BOLD, 32);
