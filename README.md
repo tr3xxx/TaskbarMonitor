@@ -2,6 +2,10 @@
 
 The program "TaskbarMonitor" by Leon Burghardt, written in Java, retrieves and displays various system resource usage values, such as CPU and GPU usage and temperature, as well as system memory usage, in the taskbar. The user has the ability to customize which values are displayed.
 
+# Usage of JSensors 
+
+<a href="https://github.com/profesorfalken/jSensors">JSensors</a> has been used to collect CPU/GPU usage and temperature 
+
 ## Examples of Extension
 
 - Adding support for monitoring multiple GPUs or CPUs
